@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+
     <application
         android:name=".IMApplication"
         android:allowBackup="true"
@@ -56,9 +57,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 腾讯SDK -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
 
-        <activity android:name=".controller.activity.MainActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tencent1105704769"/>
+                <!-- tencent你的AppId -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+
+        <activity android:name=".controller.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"/><!-- 点击输入框时软键盘不会被把当前视图顶到上面去 -->
         <activity android:name=".controller.activity.LoginActivity"/>
+        <activity android:name=".controller.activity.AddContactActivity"/>
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@ package com.wjc.im.modul;
 
 import android.content.Context;
 
-import com.wjc.im.modul.bean.UserInfo;
+import com.wjc.im.modul.bean.MyUserInfo;
 import com.wjc.im.modul.dao.UserAccountDao;
 import com.wjc.im.modul.db.DBManager;
 import com.wjc.im.utils.LogUtil;
@@ -50,7 +50,7 @@ public class Model {
     }
 
     // 用户登录成功后的处理方法
-    public void loginSuccess(UserInfo account) {
+    public void loginSuccess(MyUserInfo account) {
         // 校验
         if(account == null) {
             return;

@@ -24,10 +24,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile ('com.android.support:appcompat-v7:23.4.0'){
+    compile('com.android.support:appcompat-v7:23.4.0') {
         exclude module: 'support-v4'
     }
     testCompile 'junit:junit:4.12'
     compile project(':EaseUI')
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile files('libs/open_sdk_r5756.jar')
+    compile files('libs/mta-sdk-1.6.2.jar')
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

@@ -8,4 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--
+    android:layout_width="0dp"
+    android:layout_height="60dp"
+    android:layout_weight="1"
+    android:background="@drawable/rb_color_selector"
+    android:button="@null"
+    android:gravity="center"
+    android:textColor="@color/rb_text_color"
+    android:textSize="20sp"-->
+    <style name="MainRadioButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/rb_color_selector</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/rb_text_color</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

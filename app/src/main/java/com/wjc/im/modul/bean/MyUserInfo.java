@@ -6,17 +6,17 @@ package com.wjc.im.modul.bean;
  * Function：用户信息
  */
 
-public class UserInfo {
+public class MyUserInfo {
     private String name;// 用户名称
     private String hxid;// 环信id
     private String nick;// 用户的昵称
     private String photo;// 头像
 
-    public UserInfo() {
+    public MyUserInfo() {
 
     }
 
-    public UserInfo(String name) {
+    public MyUserInfo(String name) {
         this.name = name;
         this.hxid = name;
         this.nick = name;
@@ -56,7 +56,7 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
+        return "MyUserInfo{" +
                 "name='" + name + '\'' +
                 ", hxid='" + hxid + '\'' +
                 ", nick='" + nick + '\'' +

@@ -9,7 +9,7 @@ import android.os.Message;
 import com.hyphenate.chat.EMClient;
 import com.wjc.im.R;
 import com.wjc.im.modul.Model;
-import com.wjc.im.modul.bean.UserInfo;
+import com.wjc.im.modul.bean.MyUserInfo;
 import com.wjc.im.utils.LogUtil;
 
 /**
@@ -37,7 +37,7 @@ public class SplashActivity extends Activity {
                 // 判断当前账号是否已经登录过
                 if(EMClient.getInstance().isLoggedInBefore()) {// 登录过
                     // 获取到当前登录用户的信息
-                    UserInfo account = Model.getInstance().getUserAccountDao().getAccountByHxId(EMClient.getInstance().getCurrentUser());
+                    MyUserInfo account = Model.getInstance().getUserAccountDao().getAccountByHxId(EMClient.getInstance().getCurrentUser());
 //                    LogUtil.e(account + "----------account--------");
                     if(account == null) {// 跳转到登录页面
                         Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
