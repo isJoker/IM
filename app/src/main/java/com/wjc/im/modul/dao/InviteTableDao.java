@@ -5,9 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.wjc.im.modul.bean.GroupInfo;
-import com.wjc.im.modul.bean.InvationInfo;
+import com.wjc.im.modul.bean.InvitationInfo;
 import com.wjc.im.modul.bean.MyUserInfo;
 import com.wjc.im.modul.db.DBHelper;
+import com.wjc.im.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class InviteTableDao {
     }
 
     // 添加邀请
-    public void addInvitation(InvationInfo invitationInfo) {
+    public void addInvitation(InvitationInfo invitationInfo) {
         // 获取数据库链接
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
         // 执行添加语句
@@ -52,15 +53,19 @@ public class InviteTableDao {
     }
 
     // 获取所有邀请信息
-    public List<InvationInfo> getInvitations() {
+    public List<InvitationInfo> getInvitations() {
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
         String sql = "select * from " + InviteTable.TAB_NAME;
         Cursor cursor = database.rawQuery(sql, null);
+        LogUtil.e("InviteTableDao--------------cursor" + cursor.getColumnCount());
 
-        List<InvationInfo> invationInfos = new ArrayList<>();
+        List<InvitationInfo> invationInfos = new ArrayList<>();
 
         while (cursor.moveToNext()){
-            InvationInfo info = new InvationInfo();
+            int i = 0;
+            LogUtil.e("第" + i++ +"次");
+
+            InvitationInfo info = new InvitationInfo();
             info.setReason(cursor.getString(cursor.getColumnIndex(InviteTable.COL_REASON)));
             info.setStatus(int2InviteStatus(cursor.getInt(cursor.getColumnIndex(InviteTable.COL_STATUS))));
 
@@ -86,63 +91,65 @@ public class InviteTableDao {
 
         }
 
+        LogUtil.e("InviteTableDao--------------invationInfos" + invationInfos);
+
         // 关闭资源
         cursor.close();
         return invationInfos;
     }
 
     // 将int类型状态转换为邀请的状态
-    private InvationInfo.InvitationStatus int2InviteStatus(int intStatus) {
-        if (intStatus == InvationInfo.InvitationStatus.NEW_INVITE.ordinal()) {
-            return InvationInfo.InvitationStatus.NEW_INVITE;
+    private InvitationInfo.InvitationStatus int2InviteStatus(int intStatus) {
+        if (intStatus == InvitationInfo.InvitationStatus.NEW_INVITE.ordinal()) {
+            return InvitationInfo.InvitationStatus.NEW_INVITE;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.INVITE_ACCEPT.ordinal()) {
-            return InvationInfo.InvitationStatus.INVITE_ACCEPT;
+        if (intStatus == InvitationInfo.InvitationStatus.INVITE_ACCEPT.ordinal()) {
+            return InvitationInfo.InvitationStatus.INVITE_ACCEPT;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.INVITE_ACCEPT_BY_PEER.ordinal()) {
-            return InvationInfo.InvitationStatus.INVITE_ACCEPT_BY_PEER;
+        if (intStatus == InvitationInfo.InvitationStatus.INVITE_ACCEPT_BY_PEER.ordinal()) {
+            return InvitationInfo.InvitationStatus.INVITE_ACCEPT_BY_PEER;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.NEW_GROUP_INVITE.ordinal()) {
-            return InvationInfo.InvitationStatus.NEW_GROUP_INVITE;
+        if (intStatus == InvitationInfo.InvitationStatus.NEW_GROUP_INVITE.ordinal()) {
+            return InvitationInfo.InvitationStatus.NEW_GROUP_INVITE;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.NEW_GROUP_APPLICATION.ordinal()) {
-            return InvationInfo.InvitationStatus.NEW_GROUP_APPLICATION;
+        if (intStatus == InvitationInfo.InvitationStatus.NEW_GROUP_APPLICATION.ordinal()) {
+            return InvitationInfo.InvitationStatus.NEW_GROUP_APPLICATION;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_INVITE_ACCEPTED.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_INVITE_ACCEPTED;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_INVITE_ACCEPTED.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_INVITE_ACCEPTED;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_APPLICATION_ACCEPTED.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_APPLICATION_ACCEPTED;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_APPLICATION_ACCEPTED.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_APPLICATION_ACCEPTED;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_INVITE_DECLINED.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_INVITE_DECLINED;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_INVITE_DECLINED.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_INVITE_DECLINED;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_APPLICATION_DECLINED.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_APPLICATION_DECLINED;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_APPLICATION_DECLINED.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_APPLICATION_DECLINED;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_ACCEPT_INVITE.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_ACCEPT_INVITE;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_ACCEPT_INVITE.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_ACCEPT_INVITE;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_ACCEPT_APPLICATION.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_ACCEPT_APPLICATION;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_ACCEPT_APPLICATION.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_ACCEPT_APPLICATION;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_REJECT_APPLICATION.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_REJECT_APPLICATION;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_REJECT_APPLICATION.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_REJECT_APPLICATION;
         }
 
-        if (intStatus == InvationInfo.InvitationStatus.GROUP_REJECT_INVITE.ordinal()) {
-            return InvationInfo.InvitationStatus.GROUP_REJECT_INVITE;
+        if (intStatus == InvitationInfo.InvitationStatus.GROUP_REJECT_INVITE.ordinal()) {
+            return InvitationInfo.InvitationStatus.GROUP_REJECT_INVITE;
         }
 
         return null;
@@ -160,14 +167,14 @@ public class InviteTableDao {
     }
 
     // 更新邀请状态
-    public void updateInvitationStatus(InvationInfo.InvitationStatus invitationStatus, String hxId) {
+    public void updateInvitationStatus(InvitationInfo.InvitationStatus invitationStatus, String hxId) {
 
         if(hxId == null) {
             return;
         }
-
+        // 获取数据库链接
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
-
+        // 执行更新操作
         ContentValues values = new ContentValues();
         values.put(InviteTable.COL_STATUS,invitationStatus.ordinal());
 

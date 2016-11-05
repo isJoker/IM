@@ -20,8 +20,8 @@ public class InviteTable {
 
     public static final String CREATE_TAB = " create table "
             + TAB_NAME + " ( "
-            + COL_GROUP_HXID + " text primary key,"
-            + COL_GROUP_NAME + " text,"
+            + COL_USER_HXID + " text primary key,"
+            + COL_USER_NAME + " text,"
             + COL_GROUP_HXID + " text,"
             + COL_GROUP_NAME + " text,"
             + COL_REASON + " text,"

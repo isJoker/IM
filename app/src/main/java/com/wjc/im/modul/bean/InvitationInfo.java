@@ -6,7 +6,7 @@ package com.wjc.im.modul.bean;
  * Function：邀请信息的bean类
  */
 
-public class InvationInfo {
+public class InvitationInfo {
     private MyUserInfo user;          // 联系人
     private GroupInfo group;        // 群组
 
@@ -14,10 +14,10 @@ public class InvationInfo {
 
     private InvitationStatus status;// 邀请的状态
 
-    public InvationInfo() {
+    public InvitationInfo() {
     }
 
-    public InvationInfo(MyUserInfo user, GroupInfo group, String reason, InvitationStatus status) {
+    public InvitationInfo(MyUserInfo user, GroupInfo group, String reason, InvitationStatus status) {
         this.user = user;
         this.group = group;
         this.reason = reason;
@@ -98,7 +98,7 @@ public class InvationInfo {
 
     @Override
     public String toString() {
-        return "InvationInfo{" +
+        return "InvitationInfo{" +
                 "user=" + user +
                 ", group=" + group +
                 ", reason='" + reason + '\'' +

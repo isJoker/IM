@@ -32,7 +32,7 @@ public class IMApplication extends Application{
     }
 
     // 获取全局上下文
-    public static Context getApplication(){
+    public static Context getGlobalApplication(){
         return mContext;
     }
 

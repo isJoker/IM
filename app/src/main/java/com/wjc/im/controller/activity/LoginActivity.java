@@ -28,7 +28,7 @@ import com.wjc.im.modul.Model;
 import com.wjc.im.modul.bean.MyUser;
 import com.wjc.im.modul.bean.MyUserInfo;
 import com.wjc.im.utils.LogUtil;
-import com.wjc.im.utils.MyConstans;
+import com.wjc.im.utils.MyConstants;
 import com.wjc.im.utils.PreferenceUtils;
 import com.wjc.im.utils.Util;
 
@@ -100,8 +100,8 @@ public class LoginActivity extends Activity {
 
 
     private void initData() {
-        userName = PreferenceUtils.getString(this, MyConstans.USER_NAME);
-        userPassword = PreferenceUtils.getString(this, MyConstans.USER_PASSWORD);
+        userName = PreferenceUtils.getString(this, MyConstants.USER_NAME);
+        userPassword = PreferenceUtils.getString(this, MyConstants.USER_PASSWORD);
         etLoginName.setText(userName);
         etLoginPwd.setText(userPassword);
         if (!TextUtils.isEmpty(userPassword)) {//密码不为空
@@ -135,12 +135,12 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onSuccess() {
                         //保存上一次登录的用户名
-                        PreferenceUtils.putString(LoginActivity.this, MyConstans.USER_NAME, loginName);
+                        PreferenceUtils.putString(LoginActivity.this, MyConstants.USER_NAME, loginName);
                         // 判断是否保存用户名的密码
                         if (!isPasswordMemory.isChecked()) {//如果用户没有点击记住密码  那就清除密码
-                            PreferenceUtils.putString(LoginActivity.this, MyConstans.USER_PASSWORD, "");
+                            PreferenceUtils.putString(LoginActivity.this, MyConstants.USER_PASSWORD, "");
                         } else {
-                            PreferenceUtils.putString(LoginActivity.this, MyConstans.USER_PASSWORD, loginPwd);
+                            PreferenceUtils.putString(LoginActivity.this, MyConstants.USER_PASSWORD, loginPwd);
                         }
 
                         MyUserInfo account = new MyUserInfo(loginName);
@@ -327,27 +327,26 @@ public class LoginActivity extends Activity {
                 myUser.setPassword(password);
 
                 PreferenceUtils.putString(LoginActivity.this,
-                        MyConstans.USER_NAME, nickname);
+                        MyConstants.USER_NAME, nickname);
                 PreferenceUtils.putString(LoginActivity.this,
-                        MyConstans.USER_PASSWORD, "123456");
+                        MyConstants.USER_PASSWORD, "123456");
 
                 LogUtil.e("nickname=========" + nickname);
 
                 //注册 + 登录
-                if(!PreferenceUtils.getBoolean(LoginActivity.this,MyConstans.IS_LOGIN)) {
+                if(!PreferenceUtils.getBoolean(LoginActivity.this, MyConstants.IS_LOGIN)) {
                     hxRegist(nickname, password);
                 }
 
                 hxLogin(nickname, password);
 
-                PreferenceUtils.putBoolean(LoginActivity.this,MyConstans.IS_LOGIN,true);
+                PreferenceUtils.putBoolean(LoginActivity.this, MyConstants.IS_LOGIN,true);
 //                EventBus.getDefault().post(myUser);
                 LogUtil.e("EventBus事件发布");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
 
         }
     };

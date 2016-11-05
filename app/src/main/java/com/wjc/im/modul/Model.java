@@ -42,7 +42,7 @@ public class Model {
         // 创建用户账号数据库的操作类对象
         userAccountDao = new UserAccountDao(mContext);
         // 开启全局监听
-//        EventListener listener = new EventListener(mContext);
+        EventListener listener = new EventListener(mContext);
     }
     // 获取全局线程池对象
     public ExecutorService getGlobalThreadPool(){
@@ -63,6 +63,10 @@ public class Model {
         dbManager = new DBManager(mContext, account.getName());
 
         LogUtil.e("登录成功");
+    }
+
+    public DBManager getDbManager(){
+        return dbManager;
     }
 
     // 获取用户账号数据库的操作类对象

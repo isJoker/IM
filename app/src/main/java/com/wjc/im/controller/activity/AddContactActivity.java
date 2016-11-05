@@ -16,6 +16,7 @@ import com.hyphenate.exceptions.HyphenateException;
 import com.wjc.im.R;
 import com.wjc.im.modul.Model;
 import com.wjc.im.modul.bean.MyUserInfo;
+import com.wjc.im.utils.LogUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,9 +63,10 @@ public class AddContactActivity extends Activity {
             }
         });
         // 添加按钮的点击事件处理
-        tvAddName.setOnClickListener(new View.OnClickListener() {
+        btAddAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LogUtil.e("add----------------------------click");
                 add();
             }
         });
@@ -73,11 +75,14 @@ public class AddContactActivity extends Activity {
 
     // 添加按钮处理
     private void add() {
+        LogUtil.e("add----------------------------");
+
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    EMClient.getInstance().contactManager().addContact(userInfo.getName(),"我是XXX");
+                    EMClient.getInstance().contactManager().addContact(userInfo.getName(),"我是阿诚");
+                    LogUtil.e("添加好友邀请成功");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

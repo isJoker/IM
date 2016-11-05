@@ -30,7 +30,10 @@
         <!-- 设置环信应用的appkey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="1199161101178241#im" />
+            android:value="1181161101115130#imease" />
+        <!-- 1199161101178241#im -->
+        <!-- 1181161101115130#imease -->
+
         <!-- 声明sdk所需的service -->
         <service
             android:name="com.hyphenate.chat.EMChatService"
@@ -83,6 +86,7 @@
             android:windowSoftInputMode="adjustPan"/><!-- 点击输入框时软键盘不会被把当前视图顶到上面去 -->
         <activity android:name=".controller.activity.LoginActivity"/>
         <activity android:name=".controller.activity.AddContactActivity"/>
+        <activity android:name=".controller.activity.InviteActivity"/>
     </application>
 
 </manifest>
