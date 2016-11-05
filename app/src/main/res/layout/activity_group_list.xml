@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_group_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wjc.im.controller.activity.GroupListActivity">
+
+    <com.hyphenate.easeui.widget.EaseTitleBar
+        app:titleBarTitle="群组列表"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hyphenate.easeui.widget.EaseTitleBar>
+
+    <ListView
+        android:id="@+id/lv_grouplist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

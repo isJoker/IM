@@ -18,7 +18,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
-
     <application
         android:name=".IMApplication"
         android:allowBackup="true"
@@ -34,6 +33,7 @@
         <!-- 1199161101178241#im -->
         <!-- 1181161101115130#imease -->
         <!-- atguigu001#im -->
+
 
         <!-- 声明sdk所需的service -->
         <service
@@ -53,7 +53,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".controller.activity.SplashActivity"
+        <activity
+            android:name=".controller.activity.SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,12 +68,12 @@
             android:launchMode="singleTask"
             android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent1105704769"/>
+                <data android:scheme="tencent1105704769" />
                 <!-- tencent你的AppId -->
             </intent-filter>
         </activity>
@@ -80,14 +81,15 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-
-        <activity android:name=".controller.activity.MainActivity"
-            android:windowSoftInputMode="adjustPan"/><!-- 点击输入框时软键盘不会被把当前视图顶到上面去 -->
-        <activity android:name=".controller.activity.LoginActivity"/>
-        <activity android:name=".controller.activity.AddContactActivity"/>
-        <activity android:name=".controller.activity.InviteActivity"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".controller.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan" /> <!-- 点击输入框时软键盘不会被把当前视图顶到上面去 -->
+        <activity android:name=".controller.activity.LoginActivity" />
+        <activity android:name=".controller.activity.AddContactActivity" />
+        <activity android:name=".controller.activity.InviteActivity" />
+        <activity android:name=".controller.activity.ChatActivity" />
+        <activity android:name=".controller.activity.GroupListActivity"></activity>
     </application>
 
 </manifest>
