@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.wjc.im.modul.bean.MyUserInfo;
 import com.wjc.im.modul.db.DBHelper;
+import com.wjc.im.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,8 @@ public class ContactTableDao {
             userInfo.setName(cursor.getString(cursor.getColumnIndex(ContactTable.COL_NAME)));
             userInfo.setNick(cursor.getString(cursor.getColumnIndex(ContactTable.COL_NICK)));
             userInfo.setPhoto(cursor.getString(cursor.getColumnIndex(ContactTable.COL_PHOTO)));
+
+            users.add(userInfo);
         }
 
         // 关闭资源
@@ -121,23 +124,28 @@ public class ContactTableDao {
         values.put(ContactTable.COL_PHOTO, user.getPhoto());
         values.put(ContactTable.COL_IS_CONTACT, isMyContact ? 1 : 0);
 
+        LogUtil.e("1111111111111111111111111111111111111111111111");
+
         db.replace(ContactTable.TAB_NAME, null, values);
     }
 
     // 保存联系人信息
     public void saveContacts(List<MyUserInfo> contacts, boolean isMyContact) {
-        if(contacts != null && contacts.size() == 0) {
+        if(contacts == null || contacts.size() == 0) {
             return;
         }
 
+        LogUtil.e("2222222222222222222222222222222222222---contacts=====" + contacts);
+
         for (MyUserInfo userInfo : contacts) {
+            LogUtil.e("33333333333333333333333333333333333333333---userInfo====" + userInfo);
             saveContact(userInfo,isMyContact);
         }
     }
 
     // 删除联系人信息
     public void deleteContactByHxId(String hxId){
-        if(hxId != null) {
+        if(hxId == null) {
             return;
         }
 

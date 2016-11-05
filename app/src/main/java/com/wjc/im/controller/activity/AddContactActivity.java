@@ -66,7 +66,6 @@ public class AddContactActivity extends Activity {
         btAddAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogUtil.e("add----------------------------click");
                 add();
             }
         });
@@ -75,7 +74,6 @@ public class AddContactActivity extends Activity {
 
     // 添加按钮处理
     private void add() {
-        LogUtil.e("add----------------------------");
 
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override

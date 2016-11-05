@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.wjc.im.R;
 import com.wjc.im.modul.bean.InvitationInfo;
 import com.wjc.im.modul.bean.MyUserInfo;
-import com.wjc.im.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,9 +40,7 @@ public class InviteAdapter extends BaseAdapter {
     public void refresh(List<InvitationInfo> invationInfos){
         if(invationInfos != null && invationInfos.size() >= 0) {
             mInvationInfos.clear();
-            LogUtil.e("mInvationInfos----------clear" + mInvationInfos.size());
             mInvationInfos.addAll(invationInfos);
-            LogUtil.e("mInvationInfos----------addAll" + mInvationInfos.size());
             notifyDataSetChanged();
         }
 
