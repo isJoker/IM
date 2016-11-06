@@ -29,6 +29,7 @@ public class ChatActivity extends FragmentActivity {
     }
 
     private void initListener() {
+
         chatFragment.setChatFragmentListener(new EaseChatFragment.EaseChatFragmentHelper() {
             @Override
             public void onSetMessageAttributes(EMMessage message) {

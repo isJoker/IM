@@ -19,4 +19,6 @@ public class MyConstants {
     public static final String IS_NEW_INVITE_RED = "is_new_invite";//存储红点的状态
 
     public static final String CONTACT_INVITE_CHANGED = "contact_invite_changed";//发送邀请信息变化的广播
+
+    public static final String GROUP_INVITE_CHANGED = "group_invite_changed";// 群邀请信息变化的广播
 }
