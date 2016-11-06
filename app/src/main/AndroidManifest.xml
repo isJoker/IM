@@ -91,6 +91,8 @@
         <activity android:name=".controller.activity.ChatActivity" />
         <activity android:name=".controller.activity.GroupListActivity"/>
         <activity android:name=".controller.activity.NewGroupActivity"/>
+        <activity android:name=".controller.activity.PickContactActivity"/>
+        <activity android:name=".controller.activity.GroupDetailActivity"/>
     </application>
 
 </manifest>

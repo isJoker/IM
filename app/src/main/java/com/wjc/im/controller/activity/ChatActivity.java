@@ -1,5 +1,6 @@
 package com.wjc.im.controller.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -11,12 +12,14 @@ import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.wjc.im.R;
+import com.wjc.im.utils.MyConstants;
 
 public class ChatActivity extends FragmentActivity {
 
     private EaseChatFragment chatFragment;
     private String mHxid;
     private LocalBroadcastManager mLBM;
+    private int mChatType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,10 @@ public class ChatActivity extends FragmentActivity {
 
             @Override
             public void onEnterToChatDetails() {
+                Intent intent = new Intent(ChatActivity.this, GroupDetailActivity.class);
+                // 群id
+                intent.putExtra(MyConstants.GROUP_ID, mHxid);
+                startActivity(intent);
 
             }
 
@@ -71,6 +78,12 @@ public class ChatActivity extends FragmentActivity {
                 return null;
             }
         });
+
+        // 如果当前类型为群聊
+        if(mChatType == EaseConstant.CHATTYPE_GROUP) {
+            // 注册退群广播
+            
+        }
 
     }
 
