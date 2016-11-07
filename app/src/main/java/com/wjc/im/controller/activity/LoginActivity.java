@@ -281,7 +281,11 @@ public class LoginActivity extends Activity {
                                     bitmap = Util.getbitmap(json.getString("figureurl_qq_2"));
                                     LogUtil.e("bitmap--------------->" + bitmap);
                                     //  发布EventBus事件
-                                    EventBus.getDefault().post(new LoginEvent(bitmap));
+//                                    EventBus.getDefault().post(new LoginEvent(bitmap));
+
+                                    //  发布EventBus粘性事件
+                                    EventBus.getDefault().postSticky(new LoginEvent(bitmap));
+
                                 } catch (JSONException e) {
 
                                 }

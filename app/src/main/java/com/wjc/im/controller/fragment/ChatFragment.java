@@ -33,11 +33,14 @@ public class ChatFragment extends EaseConversationListFragment {
     @Override
     protected void initView() {
         super.initView();
+        //粘性事件注册
+        EventBus.getDefault().register(this);
 
         //设置头像显示
         titleBar.setLeftImageBitmap(leftHeaderImage);
         LogUtil.e("leftHeaderImage============>" + leftHeaderImage);
 
+        //方法一：通过LoginActivity的getImageBitmap()获取
 //        titleBar.setLeftImageBitmap(LoginActivity.getImageBitmap());
 
         // 点击item跳转到会话详情页面
@@ -63,13 +66,26 @@ public class ChatFragment extends EaseConversationListFragment {
         EMClient.getInstance().chatManager().addMessageListener(emMesageListener);
     }
 
-    //订阅事件，有人会问，你的EventBus注册事件去哪儿了，在IMApplication里面
-    @Subscribe(threadMode = ThreadMode.MAIN)
+
+    /**
+     * 方法二：一般的EventBus事件
+     * 订阅事件，有人会问，你的EventBus注册事件去哪儿了，在IMApplication里面
+     */
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onLoginEvent(LoginEvent loginEvent){
+//        LogUtil.e("leftHeaderImage----------------------------->" + loginEvent.getBitmap());
+//        leftHeaderImage = loginEvent.getBitmap();
+//        LogUtil.e("leftHeaderImage--->>>--->" + leftHeaderImage);
+//    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onLoginEvent(LoginEvent loginEvent){
         LogUtil.e("leftHeaderImage----------------------------->" + loginEvent.getBitmap());
         leftHeaderImage = loginEvent.getBitmap();
         LogUtil.e("leftHeaderImage--->>>--->" + leftHeaderImage);
     }
+
+
 
 
     private EMMessageListener emMesageListener = new EMMessageListener() {
