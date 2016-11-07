@@ -1,6 +1,7 @@
 package com.wjc.im.controller.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
@@ -10,6 +11,12 @@ import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
 import com.wjc.im.controller.activity.ChatActivity;
+import com.wjc.im.modul.LoginEvent;
+import com.wjc.im.utils.LogUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -21,10 +28,17 @@ import java.util.List;
 
 public class ChatFragment extends EaseConversationListFragment {
 
+    private static Bitmap leftHeaderImage;//必须是静态
 
     @Override
     protected void initView() {
         super.initView();
+
+        //设置头像显示
+        titleBar.setLeftImageBitmap(leftHeaderImage);
+        LogUtil.e("leftHeaderImage============>" + leftHeaderImage);
+
+//        titleBar.setLeftImageBitmap(LoginActivity.getImageBitmap());
 
         // 点击item跳转到会话详情页面
         setConversationListItemClickListener(new EaseConversationListItemClickListener() {
@@ -48,6 +62,15 @@ public class ChatFragment extends EaseConversationListFragment {
         // 监听会话消息
         EMClient.getInstance().chatManager().addMessageListener(emMesageListener);
     }
+
+    //订阅事件，有人会问，你的EventBus注册事件去哪儿了，在IMApplication里面
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(LoginEvent loginEvent){
+        LogUtil.e("leftHeaderImage----------------------------->" + loginEvent.getBitmap());
+        leftHeaderImage = loginEvent.getBitmap();
+        LogUtil.e("leftHeaderImage--->>>--->" + leftHeaderImage);
+    }
+
 
     private EMMessageListener emMesageListener = new EMMessageListener() {
         @Override
@@ -79,4 +102,10 @@ public class ChatFragment extends EaseConversationListFragment {
         }
     };
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //解注册EventBus
+        EventBus.getDefault().unregister(this);
+    }
 }

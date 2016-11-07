@@ -1,7 +1,11 @@
 package com.wjc.im.controller.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -48,6 +52,40 @@ public class PickContactActivity extends Activity {
     }
 
     private void initListener() {
+        // listview条目点击事件
+        lvPick.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // checkbox的切换
+                CheckBox cb_pick = (CheckBox) view.findViewById(R.id.cb_pick);
+                cb_pick.setChecked(!cb_pick.isChecked());
+
+                // 修改数据
+                PickContactInfo pickContactInfo = mPicks.get(position);
+                pickContactInfo.setIsChecked(cb_pick.isChecked());
+
+                // 刷新页面
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        // 保存按钮的点击事件
+        tvPickSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 获取到已经选择的联系人
+                List<String> names = adapter.getPickContacts();
+                // 给启动页面返回数据
+                Intent intent = new Intent();
+                intent.putExtra("members",names.toArray(new String[0]));
+
+                // 设置返回的结果码
+                setResult(RESULT_OK,intent);
+
+                // 结束当前页面
+                finish();
+            }
+        });
 
     }
 

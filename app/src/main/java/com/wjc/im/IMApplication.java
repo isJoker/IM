@@ -5,7 +5,10 @@ import android.content.Context;
 
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.controller.EaseUI;
+import com.wjc.im.controller.fragment.ChatFragment;
 import com.wjc.im.modul.Model;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by ${万嘉诚} on 2016/11/1.
@@ -29,6 +32,8 @@ public class IMApplication extends Application{
         Model.getInstance().init(this);
         // 初始化全局上下文对象
         mContext = this;
+
+        EventBus.getDefault().register(new ChatFragment());
     }
 
     // 获取全局上下文

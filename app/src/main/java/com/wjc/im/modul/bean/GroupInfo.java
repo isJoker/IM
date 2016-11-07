@@ -9,15 +9,15 @@ package com.wjc.im.modul.bean;
 public class GroupInfo {
     private String groupName;   // 群名称
     private String groupId;     // 群id
-    private String invatePerson;// 邀请人
+    private String invitePerson;// 邀请人
 
     public GroupInfo() {
     }
 
-    public GroupInfo(String groupName, String groupId, String invatePerson) {
+    public GroupInfo(String groupName, String groupId, String invitePerson) {
         this.groupName = groupName;
         this.groupId = groupId;
-        this.invatePerson = invatePerson;
+        this.invitePerson = invitePerson;
     }
 
     public String getGroupName() {
@@ -36,12 +36,12 @@ public class GroupInfo {
         this.groupId = groupId;
     }
 
-    public String getInvatePerson() {
-        return invatePerson;
+    public String getInvitePerson() {
+        return invitePerson;
     }
 
-    public void setInvatePerson(String invatePerson) {
-        this.invatePerson = invatePerson;
+    public void setInvitePerson(String invitePerson) {
+        this.invitePerson = invitePerson;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class GroupInfo {
         return "GroupInfo{" +
                 "groupName='" + groupName + '\'' +
                 ", groupId='" + groupId + '\'' +
-                ", invatePerson='" + invatePerson + '\'' +
+                ", invitePerson='" + invitePerson + '\'' +
                 '}';
     }
 }

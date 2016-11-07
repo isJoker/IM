@@ -168,12 +168,12 @@
         "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\layout\\ease_row_sent_video.xml"
     },
     {
-        "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ease_row_received_picture.xml",
-        "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\layout\\ease_row_received_picture.xml"
-    },
-    {
         "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ease_expression_gridview.xml",
         "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\layout\\ease_expression_gridview.xml"
+    },
+    {
+        "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ease_row_received_picture.xml",
+        "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\layout\\ease_row_received_picture.xml"
     },
     {
         "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ease_activity_show_file.xml",

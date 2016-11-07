@@ -24,6 +24,7 @@ import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 import com.wjc.im.R;
+import com.wjc.im.modul.LoginEvent;
 import com.wjc.im.modul.Model;
 import com.wjc.im.modul.bean.MyUser;
 import com.wjc.im.modul.bean.MyUserInfo;
@@ -67,6 +68,7 @@ public class LoginActivity extends Activity {
     private static Tencent mTencent;
     private UserInfo mInfo = null;
     private MyUser myUser;
+    private static Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,6 +237,7 @@ public class LoginActivity extends Activity {
 
             //下面的这个必须放到这个地方，要不然就会出错   哎，，，，，调整了近一个小时，，，，我是服我自己了
             updateUserInfo();
+
         }
     };
 
@@ -273,16 +276,15 @@ public class LoginActivity extends Activity {
                         public void run() {
                             JSONObject json = (JSONObject) response;
                             if (json.has("figureurl")) {
-                                Bitmap bitmap = null;
+                                bitmap = null;
                                 try {
                                     bitmap = Util.getbitmap(json.getString("figureurl_qq_2"));
+                                    LogUtil.e("bitmap--------------->" + bitmap);
+                                    //  发布EventBus事件
+                                    EventBus.getDefault().post(new LoginEvent(bitmap));
                                 } catch (JSONException e) {
 
                                 }
-//                                Message msg = new Message();
-//                                msg.obj = bitmap;
-//                                msg.what = 1;
-//                                mHandler.sendMessage(msg);
                             }
                         }
 
@@ -295,6 +297,7 @@ public class LoginActivity extends Activity {
 
                 }
             };
+
             mInfo = new UserInfo(this, mTencent.getQQToken());
             mInfo.getUserInfo(listener);
 
@@ -310,6 +313,7 @@ public class LoginActivity extends Activity {
 
         @Override
         public void handleMessage(Message msg) {
+
             JSONObject response = (JSONObject) msg.obj;
 
             String nickname = null;
@@ -342,8 +346,6 @@ public class LoginActivity extends Activity {
 
                 PreferenceUtils.putBoolean(LoginActivity.this, MyConstants.IS_LOGIN,true);
 //                EventBus.getDefault().post(myUser);
-                LogUtil.e("EventBus事件发布");
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -393,11 +395,16 @@ public class LoginActivity extends Activity {
         }
     }
 
+    //获取QQ头像
+    public static Bitmap getImageBitmap(){
+        return bitmap;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //进行解注册
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
 //        LogUtil.e("解注册EventBus事件");
     }
 

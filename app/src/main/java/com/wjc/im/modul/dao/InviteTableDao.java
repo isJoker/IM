@@ -40,7 +40,7 @@ public class InviteTableDao {
         if(userInfo == null) {//群组邀请
             values.put(InviteTable.COL_GROUP_HXID,invitationInfo.getGroup().getGroupId());
             values.put(InviteTable.COL_GROUP_NAME,invitationInfo.getGroup().getGroupName());
-            values.put(InviteTable.COL_USER_HXID,invitationInfo.getGroup().getInvatePerson());
+            values.put(InviteTable.COL_USER_HXID,invitationInfo.getGroup().getInvitePerson());
 
         } else {//联系人邀请
             values.put(InviteTable.COL_USER_HXID,invitationInfo.getUser().getHxid());
@@ -57,13 +57,10 @@ public class InviteTableDao {
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
         String sql = "select * from " + InviteTable.TAB_NAME;
         Cursor cursor = database.rawQuery(sql, null);
-        LogUtil.e("InviteTableDao--------------cursor" + cursor.getColumnCount());
 
         List<InvitationInfo> invationInfos = new ArrayList<>();
 
         while (cursor.moveToNext()){
-            int i = 0;
-            LogUtil.e("第" + i++ +"次");
 
             InvitationInfo info = new InvitationInfo();
             info.setReason(cursor.getString(cursor.getColumnIndex(InviteTable.COL_REASON)));
@@ -82,7 +79,7 @@ public class InviteTableDao {
 
                 groupInfo.setGroupId(cursor.getString(cursor.getColumnIndex(InviteTable.COL_GROUP_HXID)));
                 groupInfo.setGroupName(cursor.getString(cursor.getColumnIndex(InviteTable.COL_GROUP_NAME)));
-                groupInfo.setInvatePerson(cursor.getString(cursor.getColumnIndex(InviteTable.COL_USER_HXID)));
+                groupInfo.setInvitePerson(cursor.getString(cursor.getColumnIndex(InviteTable.COL_USER_HXID)));
 
                 info.setGroup(groupInfo);
             }

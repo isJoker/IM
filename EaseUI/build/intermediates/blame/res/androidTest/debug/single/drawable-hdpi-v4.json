@@ -220,12 +220,12 @@
         "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ease_ic_launcher.png"
     },
     {
-        "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ease_login_error_icon.png",
-        "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ease_login_error_icon.png"
-    },
-    {
         "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ease_unread_count_bg.9.png",
         "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ease_unread_count_bg.9.png"
+    },
+    {
+        "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ease_login_error_icon.png",
+        "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ease_login_error_icon.png"
     },
     {
         "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ease_settings_selected.png",

@@ -96,4 +96,15 @@ public class PickContactAdapter extends BaseAdapter {
             tv_name = (TextView) view.findViewById(R.id.tv_pick_name);
         }
     }
+
+    // 获取选择的联系人
+    public List<String> getPickContacts() {
+        List<String> picks = new ArrayList<>();
+        for (PickContactInfo pick  : mPicks) {
+            if(pick.isChecked()) {
+                picks.add(pick.getUser().getName());
+            }
+        }
+        return picks;
+    }
 }

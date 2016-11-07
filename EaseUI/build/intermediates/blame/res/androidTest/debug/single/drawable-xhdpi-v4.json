@@ -44,12 +44,12 @@
         "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ease_blue_add.png"
     },
     {
-        "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ease_chat_takepic_pressed.png",
-        "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ease_chat_takepic_pressed.png"
-    },
-    {
         "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ease_chatting_biaoqing_btn_normal.png",
         "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ease_chatting_biaoqing_btn_normal.png"
+    },
+    {
+        "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ease_chat_takepic_pressed.png",
+        "source": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ease_chat_takepic_pressed.png"
     },
     {
         "merged": "E:\\android\\MyAllApp\\IM\\EaseUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ease_groups_icon.png",

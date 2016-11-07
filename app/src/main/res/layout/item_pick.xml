@@ -17,7 +17,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/atguigu_logo" />
+        android:src="@drawable/goodboy" />
 
     <TextView
         android:id="@+id/tv_pick_name"
