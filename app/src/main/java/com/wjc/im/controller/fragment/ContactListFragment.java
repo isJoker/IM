@@ -96,6 +96,7 @@ public class ContactListFragment extends EaseContactListFragment {
 
         // 布局显示加号
         titleBar.setRightImageResource(R.drawable.em_add);
+        titleBar.setTitle("联系人");
         // 添加头布局
         View headerView = View.inflate(getActivity(), R.layout.header_fragment_contact, null);
 

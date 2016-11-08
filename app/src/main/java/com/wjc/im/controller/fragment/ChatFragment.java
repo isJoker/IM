@@ -37,6 +37,7 @@ public class ChatFragment extends EaseConversationListFragment {
 
         //设置头像显示
         titleBar.setLeftImageBitmap(leftHeaderImage);
+        titleBar.setTitle("会话");
 
         //方法一：通过LoginActivity的getImageBitmap()获取
 //        titleBar.setLeftImageBitmap(LoginActivity.getImageBitmap());
