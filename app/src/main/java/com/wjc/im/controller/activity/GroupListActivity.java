@@ -16,6 +16,7 @@ import com.hyphenate.exceptions.HyphenateException;
 import com.wjc.im.R;
 import com.wjc.im.controller.adapter.GroupListAdapter;
 import com.wjc.im.modul.Model;
+import com.wjc.im.utils.LogUtil;
 
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class GroupListActivity extends Activity {
 
                 // 群id   减掉头视图所占item的条数
                 EMGroup emGroup = EMClient.getInstance().groupManager().getAllGroups().get(position - 1);
+                LogUtil.e("initListener------->emGroup.getGroupId()" + emGroup.getGroupId());
                 intent.putExtra(EaseConstant.EXTRA_USER_ID,emGroup.getGroupId());
 
                 startActivity(intent);

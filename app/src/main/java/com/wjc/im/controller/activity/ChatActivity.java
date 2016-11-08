@@ -1,6 +1,9 @@
 package com.wjc.im.controller.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +15,7 @@ import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.wjc.im.R;
+import com.wjc.im.utils.LogUtil;
 import com.wjc.im.utils.MyConstants;
 
 public class ChatActivity extends FragmentActivity {
@@ -44,8 +48,11 @@ public class ChatActivity extends FragmentActivity {
                 Intent intent = new Intent(ChatActivity.this, GroupDetailActivity.class);
                 // 群id
                 intent.putExtra(MyConstants.GROUP_ID, mHxid);
+                LogUtil.e("initListener==>mHxid=========================>" + mHxid);
+
                 startActivity(intent);
 
+                finish();
             }
 
             @Override
@@ -82,7 +89,18 @@ public class ChatActivity extends FragmentActivity {
         // 如果当前类型为群聊
         if(mChatType == EaseConstant.CHATTYPE_GROUP) {
             // 注册退群广播
-            
+            BroadcastReceiver ExitGroupReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                    if(mHxid.equals(intent.getStringExtra(MyConstants.GROUP_ID))) {
+                        // 结束当前页面
+                        finish();
+                    }
+                }
+            };
+
+            mLBM.registerReceiver(ExitGroupReceiver,new IntentFilter(MyConstants.EXIT_GROUP));
         }
 
     }
@@ -92,6 +110,7 @@ public class ChatActivity extends FragmentActivity {
         chatFragment = new EaseChatFragment();
 
         mHxid = getIntent().getStringExtra(EaseConstant.EXTRA_USER_ID);
+        LogUtil.e("initData===>mHxid=============>" + mHxid);
 
         // 获取聊天类型
         String mChatType = getIntent().getStringExtra(EaseConstant.EXTRA_CHAT_TYPE);

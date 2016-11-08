@@ -141,6 +141,8 @@ public class InviteActivity extends Activity {
         // 拒绝邀请按钮
         @Override
         public void onInviteReject(final InvitationInfo invitationInfo) {
+            LogUtil.e("拒绝邀请按钮--------------------------");
+
             Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {

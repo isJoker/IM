@@ -12,7 +12,6 @@ import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
 import com.wjc.im.controller.activity.ChatActivity;
 import com.wjc.im.modul.LoginEvent;
-import com.wjc.im.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -38,7 +37,6 @@ public class ChatFragment extends EaseConversationListFragment {
 
         //设置头像显示
         titleBar.setLeftImageBitmap(leftHeaderImage);
-        LogUtil.e("leftHeaderImage============>" + leftHeaderImage);
 
         //方法一：通过LoginActivity的getImageBitmap()获取
 //        titleBar.setLeftImageBitmap(LoginActivity.getImageBitmap());
@@ -80,13 +78,8 @@ public class ChatFragment extends EaseConversationListFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onLoginEvent(LoginEvent loginEvent){
-        LogUtil.e("leftHeaderImage----------------------------->" + loginEvent.getBitmap());
         leftHeaderImage = loginEvent.getBitmap();
-        LogUtil.e("leftHeaderImage--->>>--->" + leftHeaderImage);
     }
-
-
-
 
     private EMMessageListener emMesageListener = new EMMessageListener() {
         @Override
